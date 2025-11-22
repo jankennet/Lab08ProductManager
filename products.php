@@ -1,9 +1,9 @@
 <?php
 $page='Products';
 
-//Version 2 stuff (Nov. 21, 2025)
-// include 'includes/products.php'; //Products function
-// $products = getAllProducts();
+// Version 2 stuff (Nov. 21, 2025)
+include 'includes/products.php'; //Products function
+$products = getAllProducts();
 ?>
 <!doctype html>
 <html lang="en">
@@ -25,7 +25,7 @@ $page='Products';
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Products</h1>        
       </div>
-      <!-- <div class="col-md-6">
+      <div class="col-md-6">
           <form>
           <div class="form-row">
             <div class="form-group">
@@ -34,7 +34,7 @@ $page='Products';
               <input type="submit" class="btn btn-primary" value="Search">
             </div>
           </div>
-        </div> -->
+        </div>
       <div class="table-responsive">  
         <table class="table table-striped table-sm">
           <thead>
@@ -49,17 +49,17 @@ $page='Products';
           </thead>
           <tbody>
             <!-- Version 2 stuff (Nov. 21, 2025) -->
-            
-              <!-- $counter = 0;
+            <?php
+              $counter = 0;
               foreach($products as $product) {
-                $counter+=1; -->
-            
+                $counter+=1;
+            ?>
             <tr>
-              <td>11111</td> <!-- <questionmark=dollarcounterquestionmark> -->
-              <td>11111</td> <!--<questionmark=dollarproduct['p_code']questionmark> -->
-              <td>I don't remember na sir kung ano nakalagay dito</td>
-              <td>25.99</td>
-              <td>250</td>
+              <td><?=$counter?></td>
+              <td><?=$product['p_code']?></td>
+              <td><?=$product['p_descript']?></td>
+              <td><?=number_format($product['p_price'],2)?></td>
+              <td><?=$product['p_qoh']?></td>
               <td >
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">                  
                   <label class="btn btn-primary btn-sm">
@@ -71,9 +71,9 @@ $page='Products';
                 </div>
               </td>
             </tr>
-            
-            <!-- } -->
-            
+            <?php
+            }
+            ?>
           </tbody>
         </table>
       </div>
