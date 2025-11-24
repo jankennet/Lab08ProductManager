@@ -45,7 +45,7 @@ $orders = getAllOrders();
             <tr>
               <td><?=$counter?></td>
               <td><?=implode(' ',[$invoice['cus_lname'],$invoice['cus_fname'],$invoice['cus_initial']])?></td>
-              <td><?=date("F j, Y, g:i a", strtotime($invoice['inv_date']))?></td>
+              <td><?=date("F j, Y", $invoice['inv_date'])?></td> <!-- I think not needed ang time? strtotime for g:i a -->
               <td><?=number_format($invoice['inv_subtotal'],2)?></td>
               <td><?=number_format($invoice['inv_tax'],2)?></td>
               <td><?=number_format($invoice['inv_total'],2)?></td>
