@@ -45,10 +45,10 @@ $orders = getAllOrders();
             <tr>
               <td><?=$counter?></td>
               <td><?=implode(' ',[$invoice['cus_lname'],$invoice['cus_fname'],$invoice['cus_initial']])?></td>
-              <td><?=$invoice['inv_date']?></td>
-              <td><?=$invoice['inv_subtotal']?></td>
-              <td><?=$invoice['inv_tax']?></td>
-              <td><?=$invoice['inv_total']?></td>
+              <td><?=date("F j, Y, g:i a", strtotime($invoice['inv_date']))?></td>
+              <td><?=number_format($invoice['inv_subtotal'],2)?></td>
+              <td><?=number_format($invoice['inv_tax'],2)?></td>
+              <td><?=number_format($invoice['inv_total'],2)?></td>
               <td >
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">                  
                   <label class="btn btn-primary btn-sm">
