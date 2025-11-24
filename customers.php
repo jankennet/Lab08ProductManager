@@ -1,5 +1,8 @@
 <?php
 $page='Customers';
+
+include "includes/orders.php";
+$orders = getAllOrders();
 ?>
 <!doctype html>
 <html lang="en">
@@ -26,20 +29,26 @@ $page='Customers';
           <thead>
             <tr>
               <th>#</th>
-              <th>Code</th>
               <th>Name</th>              
-              <th>Price</th>
-              <th>Stocks</th>
-              <th>Actions</th>
+              <th>Date</th>
+              <th>Sub Total</th>
+              <th>Tax</th>
+              <th>Total</th>
             </tr>
           </thead>
           <tbody>
+            <?php
+              $counter = 0;
+              foreach($orders as $invoice) {
+                $counter+=1;
+            ?>
             <tr>
-              <td>1</td>
-              <td>11111</td>
-              <td>Colgate 250 ml</td>
-              <td>25.00</td>
-              <td>200</td>
+              <td><?=$counter?></td>
+              <td><?=implode(' ',[$invoice['cus_lname'],$invoice['cus_fname'],$invoice['cus_initial']])?></td>
+              <td><?=$invoice['inv_date']?></td>
+              <td><?=$invoice['inv_subtotal']?></td>
+              <td><?=$invoice['inv_tax']?></td>
+              <td><?=$invoice['inv_total']?></td>
               <td >
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">                  
                   <label class="btn btn-primary btn-sm">
@@ -51,40 +60,9 @@ $page='Customers';
                 </div>
               </td>
             </tr>
-            <tr>
-              <td>2</td>
-              <td>22222</td>
-              <td>Organic Coconut Aminos</td>
-              <td>355.00</td>
-              <td>100</td>
-              <td >
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">                  
-                  <label class="btn btn-primary btn-sm">
-                    <a href="" class="text-white"><i class="fas fa-pen"></i></a>
-                  </label>
-                  <label class="btn btn-danger btn-sm">
-                    <a href="" class="text-white"><i class="fas fa-trash"></i></a>
-                  </label>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>33333</td>
-              <td>Wintermelon Milk Tea 500g</td>
-              <td>120</td>
-              <td>500</td>
-              <td >
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">                  
-                  <label class="btn btn-primary btn-sm">
-                    <a href="" class="text-white"><i class="fas fa-pen"></i></a>
-                  </label>
-                  <label class="btn btn-danger btn-sm">
-                    <a href="" class="text-white"><i class="fas fa-trash"></i></a>
-                  </label>
-                </div>
-              </td>
-            </tr>            
+            <?php
+              }
+            ?>  
           </tbody>
         </table>
       </div>
