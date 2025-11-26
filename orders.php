@@ -1,5 +1,5 @@
 <?php
-$page='Customers';
+$page='Orders';
 
 include "includes/orders.php";
 $orders = getAllOrders();
@@ -22,7 +22,7 @@ $orders = getAllOrders();
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Customers</h1>        
+        <h1 class="h2">Orders</h1>        
       </div>
       <div class="table-responsive">
         <table class="table table-striped table-sm">
@@ -45,7 +45,7 @@ $orders = getAllOrders();
             <tr>
               <td><?=$counter?></td>
               <td><?=implode(' ',[$invoice['cus_lname'],$invoice['cus_fname'],$invoice['cus_initial']])?></td>
-              <td><?=date("F j, Y", $invoice['inv_date'])?></td> <!-- I think not needed ang time? strtotime for g:i a -->
+              <td><?=date("F j, Y", strtotime($invoice['inv_date']))?></td> <!-- nvm need strtotime pero wala for g:i a -->
               <td><?=number_format($invoice['inv_subtotal'],2)?></td>
               <td><?=number_format($invoice['inv_tax'],2)?></td>
               <td><?=number_format($invoice['inv_total'],2)?></td>

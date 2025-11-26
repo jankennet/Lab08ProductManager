@@ -16,9 +16,9 @@
           </li>
           
            <li class="nav-item">
-            <a class="nav-link <?=$page=='Customers'?'active':''?>" href="customers.php">
-              <span data-feather="user"></span>
-              Customers
+            <a class="nav-link <?=$page=='Orders'?'active':''?>" href="orders.php">
+              <span data-feather="heart"></span>
+              Orders
             </a>
           </li>
         </ul>
